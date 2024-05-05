@@ -1,0 +1,47 @@
+<section class="row mx-auto mt-5 mb-5 d-flex">
+    <div class="col-3  offset-2 ">
+        <div class="rounded ">
+            @if (productDetails.images) {
+                <ngb-carousel >
+                    @for (image of productDetails.images; track $index) {
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                                <img [src]="image" alt="Random" class="d-block w-100 rounded image-height"/>
+                            </div>
+                            <!-- <div class="carousel-caption">
+                                <h3>10 seconds between slides...</h3>
+                                <p>This carousel uses customized default values.</p>
+                            </div> -->
+                        </ng-template>
+                        
+                    }
+                </ngb-carousel>
+            }
+            
+            
+        </div>
+    </div>
+
+
+    <div class="col-5 mb-5">
+        <h1>{{productDetails.title}}</h1>
+        <p class="">{{productDetails.description}} {{productDetails.description}}</p>
+        <div class="d-flex">
+            <h2 class="">${{productDetails.price | discount : productDetails.discountPercentage}}  </h2>
+            <h4 class="text-decoration-line-through ms-3 align-self-center">${{productDetails.price}}</h4>
+
+        </div>
+
+
+        <app-stars [rating] ="productDetails.rating"></app-stars>
+
+        <div class="d-flex justify-content-around mt-5">
+             <button class="btn btn-light btn-outline-danger fs-5">Add To Favorites 
+                <span class="" style="font-size: 1.2rem; color: red;">♥</span>
+             </button>
+
+            <button class="btn btn-dark btn-lg" (click)="addToCard(productDetails)">Add To Card</button>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,63 @@
+<section>
+    <div class="mt-5 d-flex justify-content-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+            <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z">
+            </path>
+        </svg>
+    
+        <h1 class="text-center text-dark fw-bolder"> Shopping Cart</h1>
+    </div>
+    
+    
+    <table class="mt-5 container text-center align-middle border-dark  table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="my-auto">
+            @for( card of cards ; track $index)
+            {
+                <tr>
+                    <td><img [src]="card.images[0]" style="width: 10rem; height: 8rem;"></td>
+                    <td>{{card.title}}</td>
+                    <td class="">
+                        <div class="d-flex justify-content-evenly">
+                            <button class="btn btn-secondary fw-bolder rounded-circle" (click)="increaseQuantity(card)">+</button>
+                            {{card.quantity}}
+                            <button class="btn btn-secondary fw-bolder rounded-circle " (click)="decreaseQuantity(card)">-</button>
+                        </div>
+                    </td>
+                    <td>{{card.stock}}</td>
+                    <td>{{card.price * card.quantity}}$</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="removeFromCard(card)">Remove</button>
+                    </td>
+                </tr>
+
+            }
+            
+            
+                
+        </tbody>
+        <!-- <tfoot>
+            @for(card of cards ;track $index)
+            {
+
+            }
+            <tr></tr>
+            <h3 class="text-end colspan-6">Total Price : </h3>
+        </tfoot> -->
+    </table>
+
+    <!-- <div class="container mt-5"> 
+        <h3 class="text-end ">Total Price : {{totalPrice}}</h3>
+
+    </div> -->
+
+</section>

@@ -1,0 +1,118 @@
+<section class="mt-5 d-flex flex-column justify-content-center align-items-center">
+
+    <h1 class=" text-dark mb-5">Register Form</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="handleRegisterForm()"  class="w-50 ">
+        <div class="mb-3">
+          <label for="exampleInputName1" class="form-label fw-bold">Name </label>
+          <input type="text" class="form-control" id="exampleInputName1" 
+          aria-describedby="nameHelp" formControlName="name" >
+
+          @if(registerForm.controls['name'].invalid && registerForm.controls['name'].touched)
+          {
+            <div id="emailHelp" class="form-text text-danger">
+                @if(registerForm.controls['name'].errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+
+                @if(registerForm.controls['name'].errors?.['minlength'])
+                {
+                    <span>This feild must have at least 3 charachters</span>
+                }
+            </div>
+
+          }
+
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label fw-bold">Email </label>
+          <input type="email" class="form-control" id="exampleInputEmail1" 
+          aria-describedby="emailHelp"  formControlName="email">
+
+          @if(registerForm.controls['email'].invalid && registerForm.controls['email'].touched)
+          {
+            <div id="emailHelp" class="form-text text-danger">
+                @if(registerForm.controls['email'].errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+
+                <!-- @if(registerForm.controls['email'].errors?.['pattern'])
+                {
+                    <span>This Email doesn't match the Pattern</span>
+                } -->
+            </div>
+
+          }
+          
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputUserName1" class="form-label fw-bold">Username </label>
+          <input type="text" class="form-control" id="exampleInputUserName1" 
+          aria-describedby="userNameHelp" formControlName="userName" >
+
+          @if(registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched)
+          {
+            <div id="passHelp" class="form-text text-danger">
+                @if(registerForm.controls['userName'].errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+
+                @if(registerForm.controls['userName'].errors?.['pattern'])
+                {
+                    <span>This UserName doesn't match the Pattern</span>
+                }
+            </div>
+          }
+          
+        </div>
+
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label fw-bold ">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password"  >
+
+          @if(registerForm.controls['password'].invalid && registerForm.controls['password'].touched)
+          {
+            <div id="passHelp" class="form-text text-danger">
+                @if(registerForm.controls['password'].errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+
+                @if(registerForm.controls['password'].errors?.['pattern'])
+                {
+                    <span>This Password doesn't match the Pattern</span>
+                }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword2" class="form-label fw-bold ">Confirmed Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword2" formControlName="confirmPassword" >
+
+          @if(registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched)
+          {
+            <div id="passHelp" class="form-text text-danger">
+                @if(registerForm.controls['confirmPassword'].errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+
+                @if(registerForm.controls['confirmPassword'].errors?.['pattern'])
+                {
+                    <span>This Password doesn't match the Pattern</span>
+                }
+            </div>
+          }
+        </div>
+       
+        <button type="submit" class="btn btn-dark" >Submit</button>
+      </form>
+
+</section>

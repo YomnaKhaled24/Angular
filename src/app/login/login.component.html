@@ -1,0 +1,51 @@
+<section class="mt-5 d-flex flex-column justify-content-center align-items-center">
+
+    <h1 class=" text-dark mb-5">Login Form</h1>
+
+    <form #loginForm="ngForm"  (ngSubmit)="handleLoginForm(loginForm)"  class="w-50 ">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label fw-bold">Email </label>
+          <input type="email" class="form-control" id="exampleInputEmail1" 
+          aria-describedby="emailHelp" required name="email" ngModel #email="ngModel"
+          pattern="[a-zA-Z0-9_]+@[a-z0-9.-]+\.[a-z]{2,}$">
+
+          @if(email.invalid && email.touched)
+          {
+            <div id="emailHelp" class="form-text text-danger">
+                @if(email.errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+
+                @if(email.errors?.['pattern'])
+                {
+                    <span>This Email doesn't match the Pattern</span>
+                }
+            </div>
+
+          }
+          
+        </div>
+
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label fw-bold ">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" 
+          required name="password" ngModel #pass="ngModel">
+
+          @if(pass.invalid && pass.touched)
+          {
+            <div id="passHelp" class="form-text text-danger">
+                @if(pass.errors?.['required'])
+                {
+                    <span>This Feild is Required</span>
+                }
+            </div>
+
+          }
+        </div>
+       
+        <button type="submit" class="btn btn-dark" [disabled]="loginForm.invalid">Submit</button>
+      </form>
+
+</section>
